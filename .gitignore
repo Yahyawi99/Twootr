@@ -1,0 +1,59 @@
+# Compiled Java files
+*.class
+
+# Build directories
+target/
+build/
+out/
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Maven
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# Gradle
+.gradle/
+!gradle-wrapper.jar
+.gradle-cache/
+
+# IDE files
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# OS generated files
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Environment files
+.env
