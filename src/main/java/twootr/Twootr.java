@@ -1,14 +1,16 @@
 package twootr;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 public class Twootr {
-  private final Map<String, User> users;
+  private final Map<String, User> users = new HashMap<>();
 
   public Twootr() {
-    this.users = null;
   }
 
-  Optional<SenderEndPoint> onLogon(String userId, String pwd, ReceiverEndPoint receiver);
+  Optional<SenderEndPoint> onLogon(String userId, String pwd, ReceiverEndPoint receiver) {
+    return Optional.empty();
+  }
 }
