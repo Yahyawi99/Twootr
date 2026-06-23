@@ -1,9 +1,9 @@
 package twootr;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class TwootrTest {
@@ -25,5 +25,28 @@ public class TwootrTest {
     final Optional<SenderEndPoint> endPoint = twooter.onLogon(TestData.USER_ID, "bad password", receiverEndPoint);
 
     assertFalse(endPoint.isPresent());
+  }
+
+  @Test
+  public void shouldFollowValidUser() {
+    // logon();
+
+    final FollowStatus followStatus = twooter.onFollow(TestData.OTHER_USER_ID);
+
+    assertEquals(FollowStatus.SUCCESS, followStatus);
+  }
+
+  @Test
+  public void shouldNotDuplicateFollowValidUser() {
+    final FollowStatus followStatus = twooter.onFollow(TestData.OTHER_USER_ID);
+
+    assertEquals(FollowStatus.ALREADY_FOLLOWING, followStatus);
+  }
+
+  @Test
+  public void shouldNotFollowInValidUser() {
+    final FollowStatus followStatus = twooter.onFollow(TestData.INVALID_USER_ID);
+
+    assertEquals(FollowStatus.INVALID_USER, followStatus);
   }
 }

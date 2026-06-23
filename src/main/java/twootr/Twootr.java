@@ -13,4 +13,8 @@ public class Twootr {
   Optional<SenderEndPoint> onLogon(String userId, String pwd, ReceiverEndPoint receiver) {
     return Optional.empty();
   }
+
+  FollowStatus onFollow(String userId) {
+    return FollowStatus.SUCCESS;
+  }
 }
