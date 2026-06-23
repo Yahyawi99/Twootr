@@ -14,7 +14,7 @@ public class Twootr {
     return Optional.empty();
   }
 
-  FollowStatus onFollow(String userId) {
+  public static FollowStatus onFollow(final User user, final String userIdToFollow) {
     return FollowStatus.SUCCESS;
   }
 }
