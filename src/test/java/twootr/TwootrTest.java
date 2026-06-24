@@ -62,9 +62,23 @@ public class TwootrTest {
 
     verify(twootRepository).add(id, TestData.OTHER_USER_ID, TWOOT);
     verify(receiverEndPoint).onTwoot(new Twoot(id, TestData.OTHER_USER_ID, TWOOT, new Position(0)));
+  }
+
+  public void shouldReceiveReplayOfTwootsAfterLogoff() {
+    final String id = -1;
+
+    userFollowsOtherUser();
+
+    final SenderEndPoint otherEndPoint = otherLogon();
+    otherEndPoint.onSendTwoot("id", mock(User.class), "id");
+
+    logon();
+
+    verify(receiverEndPoint).onTwoot(twootAt);
 
   }
 
+  // =================================
   // Refactoring
   private void logon() {
     this.endPoint = logon(TestData.USER_ID, receiverEndPoint);
@@ -76,4 +90,5 @@ public class TwootrTest {
     assertTrue(endPoint.isPresent(), "Failed to logon");
     return endPoint.get();
   }
+
 }
